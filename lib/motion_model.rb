@@ -1,5 +1,6 @@
-Motion::Project::App.setup do |app|
-  Dir.glob(File.join(File.dirname(__FILE__), "motion_model/**/*.rb")).each do |file|
-    app.files.unshift(file)
-  end
+require 'motion-require'
+require 'motion-support'
+
+%w(*.rb model/*.rb adapters/*.rb).each do |path|
+  Motion::Require.all(Dir.glob(File.expand_path("../../motion/#{path}", __FILE__)))
 end
